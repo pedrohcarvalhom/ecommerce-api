@@ -3,6 +3,8 @@ services:
   api:
     build: .
     tty: true
+    volumes:
+      - .:/app
     ports:
       - '3000:3000'
     depends_on:
@@ -11,11 +13,17 @@ services:
       - DATABASE_HOST=db
       - DATABASE_USERNAME=ecommerce
       - DATABASE_PASSWORD=ecommerce
+
   db:
     image: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
     ports:
       - '5433:5432'
     environment:
       - POSTGRES_USER=ecommerce
       - POSTGRES_PASSWORD=ecommerce
       - DATABASE_URL=postgresql://ecommerce:ecommerce@db:5433/ecommerce
+
+volumes:
+  postgres:
