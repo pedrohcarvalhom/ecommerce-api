@@ -23,7 +23,10 @@ default: &default
 
 development:
   <<: *default
-  database: ecommerce_api_development
+  database: ecommerce
+  host: db
+  username: ecommerce
+  password: ecommerce
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
