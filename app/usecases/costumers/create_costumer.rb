@@ -15,8 +15,8 @@ module Costumers
 
     def validate_params
       @validator.validate_presence
-      # @validator.validate_cpf
-      # @validator.validate_email
+      @validator.validate_cpf
+      @validator.validate_email
       @validator.validate_lengths
     end
 
