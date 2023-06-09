@@ -15,5 +15,17 @@ class CostumersRepository
     def get_costumer(email)
       Costumer.find_by_email(email)
     end
+
+    def find(id)
+      Costumer.find(id)
+    end
+
+    def destroy(id)
+      Costumer.destroy(id)
+    end
+
+    def update(attrs)
+      Costumer.where(id: attrs['id']).update(attrs)
+    end
   end
 end
