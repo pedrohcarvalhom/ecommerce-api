@@ -13,3 +13,6 @@ Layout/LineLength:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false
