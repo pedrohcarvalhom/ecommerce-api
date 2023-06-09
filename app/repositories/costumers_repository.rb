@@ -11,5 +11,9 @@ class CostumersRepository
     def email_registered?(email)
       Costumer.exists?(email: email)
     end
+
+    def get_costumer(email)
+      Costumer.find_by_email(email)
+    end
   end
 end
