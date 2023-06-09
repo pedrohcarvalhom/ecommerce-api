@@ -56,6 +56,9 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    apipie-rails (1.2.1)
+      actionpack (>= 5.0)
+      activesupport (>= 5.0)
     ast (2.4.2)
     awesome_print (1.9.2)
     backport (1.2.0)
@@ -246,6 +249,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  apipie-rails
   awesome_print (~> 1.8)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
