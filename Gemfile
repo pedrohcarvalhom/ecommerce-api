@@ -32,6 +32,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_print', '~> 1.8'
   gem 'listen', '~> 3.2'
   gem 'meta_request'
   gem 'solargraph'

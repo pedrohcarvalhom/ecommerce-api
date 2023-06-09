@@ -7,6 +7,10 @@ class CostumersController < ApplicationController
   end
 
   def create
+    costumer = Costumers::CreateCostumer.new(costumer_params: costumer_params.to_h).perform
+    render json: costumer
+  rescue => e
+    render json: e.exception, status: 500
   end
 
   def update
@@ -18,6 +22,6 @@ class CostumersController < ApplicationController
   private
 
   def costumer_params
-    params.permit(:name, :address, :phone, :cpf, :email)
+    params.permit(:name, :address, :phone, :cpf, :email, :password)
   end
 end
