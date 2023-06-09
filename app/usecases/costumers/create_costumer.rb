@@ -3,6 +3,7 @@ module Costumers
     def initialize(costumer_params:)
       @costumer_params = costumer_params
       @repository = CostumersRepository
+      @validator = CostumersService::CostumerValidatorService.new(costumer_params: @costumer_params)
     end
 
     def perform
@@ -13,7 +14,8 @@ module Costumers
     private
 
     def validate_params
-      CostumersService::CostumerValidatorService.new(costumer_params: @costumer_params).validate
+      BasicValidatorService.validate_presence(@costumer_params)
+      @validator.validate_lengths
     end
 
     def create_costumer

@@ -8,23 +8,19 @@ module CostumersService
       @phone = costumer_params[:phone]
     end
 
-    def validate
-      validate_name_presence
+    def validate_lengths
       validate_name_length
+      validate_email_length
     end
 
     private
 
     def validate_name_length
-      return true if @name.length >= 3
-
-      raise ArgumentError, 'Name must have more than three caracters'
+      BasicValidatorService.validate_length(@name, 'Name', 3)
     end
 
-    def validate_name_presence
-      return true if @name.present?
-
-      raise ArgumentError, 'Name cannot be empty'
+    def validate_email_length
+      BasicValidatorService.validate_length(@email, 'Email', 7)
     end
   end
 end
