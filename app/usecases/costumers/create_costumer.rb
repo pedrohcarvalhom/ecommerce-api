@@ -15,7 +15,7 @@ module Costumers
 
     def validate_params
       BasicValidatorService.validate_presence(@costumer_params)
-      CpfValidatorService.new.validate_each(@costumer_params["cpf"])
+      BasicValidatorService.validate_cpf(@costumer_params['cpf'])
       @validator.validate_lengths
     end
 

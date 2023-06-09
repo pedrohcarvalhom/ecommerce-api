@@ -1,3 +1,5 @@
+require 'cpf_cnpj'
+
 class BasicValidatorService
   class << self
     def validate_presence(hash)
@@ -7,9 +9,15 @@ class BasicValidatorService
     end
 
     def validate_length(arg, key, min_length)
-      return true if arg.length >= min_length
+      return if arg.length >= min_length
 
       raise ArgumentError, "#{key} must have at least #{min_length} caracters"
+    end
+
+    def validate_cpf(cpf)
+      return if ifCPF.valid?(cpf)
+
+      raise ArgumentError, 'Invalid CPF'
     end
   end
 end
