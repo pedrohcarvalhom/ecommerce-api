@@ -24,6 +24,10 @@ module CostumersService
       raise ArgumentError, 'CPF already registered' if CostumersRepository.cpf_registered?(@cpf)
     end
 
+    def validate_email
+      raise ArgumentError, 'Email already registered' if CostumersRepository.email_registered?(@email)
+    end
+
     private
 
     def validate_name_length
