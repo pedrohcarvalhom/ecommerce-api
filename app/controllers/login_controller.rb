@@ -1,4 +1,7 @@
 class LoginController < ApplicationController
+  api :POST, '/login', 'Login your costumer account'
+  param :email, String, 'Email registered', required: true
+  param :password, String, 'Password registered', required: true
   def login
     @costumer = CostumersRepository.get_costumer(login_params[:email])
 
