@@ -15,7 +15,7 @@ class BasicValidatorService
     end
 
     def validate_cpf(cpf)
-      return if ifCPF.valid?(cpf)
+      return if CPF.valid?(cpf)
 
       raise ArgumentError, 'Invalid CPF'
     end
