@@ -37,8 +37,10 @@ class CostumersController < ApplicationController
   def create
     costumer = Costumers::CreateCostumer.new(costumer_params: costumer_params.to_h).perform
     render json: costumer
+  rescue ArgumentError => e
+    render json: e.exception, status: 400
   rescue => e
-    render json: e.exception, status: 500
+    render json: e, status: 500
   end
 
   api :PUT, '/costumers', 'Updates the costumer infos'
