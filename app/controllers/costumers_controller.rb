@@ -1,5 +1,6 @@
 class CostumersController < ApplicationController
   before_action :authenticate_costumer, only: %i[update delete]
+  include ErrorHandler
 
   def_param_group :create_costumer_params do
     param :name, String, 'Name of the costumer', required: true
@@ -37,10 +38,6 @@ class CostumersController < ApplicationController
   def create
     costumer = Costumers::CreateCostumer.new(costumer_params: costumer_params.to_h).perform
     render json: costumer
-  rescue ArgumentError => e
-    render json: e.exception, status: 400
-  rescue => e
-    render json: e, status: 500
   end
 
   api :PUT, '/costumers', 'Updates the costumer infos'
@@ -48,8 +45,6 @@ class CostumersController < ApplicationController
   def update
     costumer = Costumers::UpdateCostumer.new(costumer_params: costumer_params).perform
     render json: costumer
-  rescue => e
-    render json: e.exception, status: 500
   end
 
   api :DELETE, '/costumers', 'Deletes the costumer'
