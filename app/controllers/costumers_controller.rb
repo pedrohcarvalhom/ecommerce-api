@@ -33,8 +33,6 @@ class CostumersController < ApplicationController
     render json: costumer
   end
 
-  api :POST, '/costumers', 'Create a costumer'
-  param_group :create_costumer_params
   def create
     costumer = Costumers::CreateCostumer.new(costumer_params: costumer_params.to_h).perform
     render json: costumer
@@ -58,6 +56,9 @@ class CostumersController < ApplicationController
   private
 
   def costumer_params
-    params.permit(:id, :name, :address, :phone, :cpf, :email, :password)
+    params.permit(
+      :id, :name, :phone, :cpf, :email, :password,
+      address: [:street, :zip_code, :city, :state, :country]
+    )
   end
 end

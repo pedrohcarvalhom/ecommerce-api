@@ -1,31 +1,41 @@
 class CostumersRepository
   class << self
     def create_costumer(*attrs)
-      Costumer.create!(attrs)
+      entity.create!(attrs)
+    end
+
+    def create_related_address(created_costumer, *address_attrs)
+      created_costumer.first.create_address!(address_attrs.first)
     end
 
     def cpf_registered?(cpf)
-      Costumer.exists?(cpf: cpf)
+      entity.exists?(cpf: cpf)
     end
 
     def email_registered?(email)
-      Costumer.exists?(email: email)
+      entity.exists?(email: email)
     end
 
     def get_costumer(email)
-      Costumer.find_by_email(email)
+      entity.find_by_email(email)
     end
 
     def find(id)
-      Costumer.find(id)
+      entity.find(id)
     end
 
     def destroy(id)
-      Costumer.destroy(id)
+      entity.destroy(id)
     end
 
     def update(attrs)
-      Costumer.where(id: attrs['id']).update(attrs)
+      entity.where(id: attrs['id']).update(attrs)
+    end
+
+    private
+
+    def entity
+      Costumer
     end
   end
 end

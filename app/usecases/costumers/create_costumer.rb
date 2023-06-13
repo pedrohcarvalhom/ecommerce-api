@@ -8,7 +8,12 @@ module Costumers
 
     def perform
       validate_params
-      create_costumer
+      ActiveRecord::Base.transaction do
+        costumer = create_costumer
+        create_address(costumer)
+
+        costumer
+      end
     end
 
     private
@@ -21,7 +26,11 @@ module Costumers
     end
 
     def create_costumer
-      @repository.create_costumer(@costumer_params)
+      @repository.create_costumer(@costumer_params.except('address'))
+    end
+
+    def create_address(costumer)
+      @repository.create_related_address(costumer, @costumer_params['address'])
     end
   end
 end
