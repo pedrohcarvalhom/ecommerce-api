@@ -1,5 +1,5 @@
 # Base image
-FROM ruby:2.7.7
+FROM ruby:2.7.6
 
 # Set working directory
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 # Install bundler
-RUN gem install bundler:2.2.28
+RUN gem install bundler
 
 # Copy Gemfile and Gemfile.lock
 COPY Gemfile Gemfile.lock ./
