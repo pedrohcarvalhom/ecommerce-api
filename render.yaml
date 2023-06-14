@@ -2,6 +2,7 @@ databases:
   - name: ecommerce
     databaseName: ecommerce
     user: ecommerce
+    plan: free
 
 services:
   - type: web
