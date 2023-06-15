@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_13_000935) do
+ActiveRecord::Schema.define(version: 2023_06_15_015824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2023_06_13_000935) do
     t.string "recover_password_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_costumers_on_email"
+    t.index ["token"], name: "index_costumers_on_token"
   end
 
   add_foreign_key "addresses", "costumers"
