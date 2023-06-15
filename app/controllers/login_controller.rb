@@ -1,9 +1,7 @@
 class LoginController < ApplicationController
-  after_action :add_headers
+  before_action :costumer_have_account?, only: [:validate]
+  after_action :add_headers, only: [:login]
 
-  api :POST, '/login', 'Login your costumer account'
-  param :email, String, 'Email registered', required: true
-  param :password, String, 'Password registered', required: true
   def login
     @costumer = CostumersRepository.get_costumer(login_params[:email])
 
@@ -12,6 +10,14 @@ class LoginController < ApplicationController
       render json: @costumer
     else
       render json: { error: 'Unauthorized' }, status: :unauthorized
+    end
+  end
+
+  def validate
+    if @current_costumer.nil?
+      head :no_content
+    else
+      render json: @current_costumer
     end
   end
 

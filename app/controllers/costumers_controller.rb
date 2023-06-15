@@ -1,6 +1,5 @@
 class CostumersController < ApplicationController
   before_action :authenticate_costumer, only: %i[update delete]
-  include ErrorHandler
 
   def_param_group :create_costumer_params do
     param :name, String, 'Name of the costumer', required: true

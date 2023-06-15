@@ -5,6 +5,7 @@ module ErrorHandler
     rescue_from ArgumentError, with: :render_exception
     rescue_from Apipie::ParamInvalid, with: :render_apipie_exception
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_exception
+    rescue_from SecurityError, with: :render_security_exception
   end
 
   private
@@ -19,5 +20,9 @@ module ErrorHandler
 
   def record_not_found_exception
     render json: 'Could not locale in database', status: 500
+  end
+
+  def render_security_exception
+    render json: 'User not authorized', status: 401
   end
 end
