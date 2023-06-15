@@ -5,12 +5,10 @@ class LoginController < ApplicationController
   def login
     @costumer = CostumersRepository.get_costumer(login_params[:email])
 
-    if @costumer&.authenticate(login_params[:password])
-      regenerate_tokens
-      render json: @costumer
-    else
-      render json: { error: 'Unauthorized' }, status: :unauthorized
-    end
+    raise SecurityError if @costumer&.authenticate(login_params[:password]) == false
+
+    regenerate_tokens
+    render json: @costumer
   end
 
   def validate
