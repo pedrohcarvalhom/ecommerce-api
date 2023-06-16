@@ -1,0 +1,3 @@
+entrypoint: bundle exec rails --port $PORT
+env: standard
+runtime: ruby27
