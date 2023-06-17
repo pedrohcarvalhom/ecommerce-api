@@ -2,7 +2,7 @@ entrypoint: bundle exec rackup --port $PORT
 env: standard
 runtime: ruby27
 
-automatic_scalling:
+automatic_scaling:
   min_instances: 1
   max_instances: 2
 
