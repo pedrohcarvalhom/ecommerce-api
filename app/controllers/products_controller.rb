@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    #
+    render json: repository.find(products_params[:id]), status: 200
   end
 
   def create
@@ -16,7 +16,9 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    #
+    repository.destroy(products_params[:id])
+
+    head :no_content
   end
 
   private

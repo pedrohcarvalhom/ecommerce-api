@@ -18,8 +18,8 @@ module ErrorHandler
     render json: 'Missing parameters', status: 400
   end
 
-  def record_not_found_exception
-    render json: 'Could not locale in database', status: 500
+  def record_not_found_exception(exception)
+    render json: { error: exception.message }, status: 404
   end
 
   def render_security_exception
