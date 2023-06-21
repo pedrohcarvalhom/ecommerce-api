@@ -8,7 +8,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    #
+    product = Products::CreateProduct.new.perform(products_params.to_h)
+
+    render json: product, status: 200
   end
 
   def update
@@ -24,7 +26,7 @@ class ProductsController < ApplicationController
   private
 
   def products_params
-    params.permit(:id, :title, :subtitle, :number_of_reviews, :price, :quantity, :description, :colors)
+    params.permit(:id, :title, :subtitle, :number_of_reviews, :price, :quantity, :description, :colors, :category_id)
   end
 
   def repository

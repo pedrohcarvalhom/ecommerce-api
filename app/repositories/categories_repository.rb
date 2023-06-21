@@ -1,11 +1,11 @@
-class ProductsRepository
+class CategoriesRepository
   class << self
-    def create_product(params:)
-      entity.create!(params)
+    def create_category(*attrs)
+      entity.create!(attrs)
     end
 
-    def get_product(email)
-      entity.find_by_email(email)
+    def get_category_by_name(category_name)
+      entity.select(:id, :name).find_by("name ILIKE ?", category_name)
     end
 
     def find(id)
@@ -27,7 +27,7 @@ class ProductsRepository
     private
 
     def entity
-      Product
+      Category
     end
   end
 end
