@@ -1,7 +1,7 @@
 class CategoriesRepository
   class << self
-    def create_category(*attrs)
-      entity.create!(attrs)
+    def create_category(params:)
+      entity.create!(params)
     end
 
     def get_category_by_name(category_name)
