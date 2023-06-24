@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   private
 
   def products_params
-    params.permit(:id, :title, :subtitle, :number_of_reviews, :price, :quantity, :description, :colors, :category_id)
+    params.permit(:id, :title, :subtitle, :number_of_reviews, :price, :quantity, :description, :colors, :category_id, images: [])
   end
 
   def repository
