@@ -13,6 +13,9 @@ development:
 test:
   <<: *default
   database: ecommerce
+  host: db
+  username: ecommerce
+  password: ecommerce
 
 production:
   <<: *default
