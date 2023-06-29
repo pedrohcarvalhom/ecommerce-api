@@ -26,7 +26,7 @@ module Costumers
     end
 
     def create_costumer
-      @repository.create_costumer(@costumer_params.except(:address))
+      @repository.create(params: @costumer_params.except(:address))
     end
 
     def create_address(costumer)

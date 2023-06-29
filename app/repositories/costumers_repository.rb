@@ -1,11 +1,7 @@
-class CostumersRepository
+class CostumersRepository < BaseRepository
   class << self
-    def create_costumer(*attrs)
-      entity.create!(attrs)
-    end
-
     def create_related_address(created_costumer, *address_attrs)
-      created_costumer.first.create_address!(address_attrs.first)
+      created_costumer.create_address!(address_attrs.first)
     end
 
     def cpf_registered?(cpf)
@@ -18,18 +14,6 @@ class CostumersRepository
 
     def get_costumer(email)
       entity.find_by_email(email)
-    end
-
-    def find(id)
-      entity.find(id)
-    end
-
-    def destroy(id)
-      entity.destroy(id)
-    end
-
-    def update(attrs)
-      entity.where(id: attrs['id']).update(attrs)
     end
 
     private
