@@ -1,7 +1,7 @@
 module Costumers
   class CreateCostumer
     def initialize(costumer_params:)
-      @costumer_params = costumer_params
+      @costumer_params = costumer_params.transform_keys(&:to_sym)
       @repository = CostumersRepository
       @validator = CostumersService::CostumerValidatorService.new(costumer_params: @costumer_params)
     end
@@ -26,11 +26,11 @@ module Costumers
     end
 
     def create_costumer
-      @repository.create_costumer(@costumer_params.except('address'))
+      @repository.create_costumer(@costumer_params.except(:address))
     end
 
     def create_address(costumer)
-      @repository.create_related_address(costumer, @costumer_params['address'])
+      @repository.create_related_address(costumer, @costumer_params[:address])
     end
   end
 end
