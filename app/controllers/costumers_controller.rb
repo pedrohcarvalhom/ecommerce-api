@@ -33,14 +33,14 @@ class CostumersController < ApplicationController
   end
 
   def create
-    costumer = Costumers::CreateCostumer.new(costumer_params: costumer_params.to_h).perform
+    costumer = Costumers::CreateCostumer.new(costumer_params: costumer_params.transform_keys(&:to_sym)).perform
     render json: costumer
   end
 
   api :PUT, '/costumers', 'Updates the costumer infos'
   param_group :update_costumer_params
   def update
-    costumer = Costumers::UpdateCostumer.new(costumer_params: costumer_params).perform
+    costumer = Costumers::UpdateCostumer.new(costumer_params: costumer_params.transform_keys(&:to_sym)).perform
     render json: costumer
   end
 

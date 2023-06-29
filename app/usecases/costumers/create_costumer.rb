@@ -1,7 +1,7 @@
 module Costumers
   class CreateCostumer
     def initialize(costumer_params:)
-      @costumer_params = costumer_params.transform_keys(&:to_sym)
+      @costumer_params = costumer_params
       @repository = CostumersRepository
       @validator = CostumersService::CostumerValidatorService.new(costumer_params: @costumer_params)
     end

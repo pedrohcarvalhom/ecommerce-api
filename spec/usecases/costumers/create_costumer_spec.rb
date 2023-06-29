@@ -12,8 +12,8 @@ RSpec.describe Costumers::CreateCostumer do
         params[:address] = address_attr
         costumer = action.perform
 
-        expect(costumer.first).to have_attributes(id: be_present)
-        expect(costumer.first.address).to have_attributes(id: be_present)
+        expect(costumer).to have_attributes(id: be_present)
+        expect(costumer.address).to have_attributes(id: be_present)
       end
     end
 
