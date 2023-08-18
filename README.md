@@ -1,24 +1,10 @@
-# README
+# README 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WORK IN PROGRESS
 
-Things you may want to cover:
+Uma API que visa simular um ambiente de Ecommerce simples, contendo:
 
-* Ruby version
+- Entidade de cliente, endereço, produtos, categorias
+- Processo de login, refresh token, checkout
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A API conta com testes unitários e de integração, além de tentar realizar uma abstração da lógica de negócios em camadas de usecases, validações em service objects e persistência em banco de dados em camadas de Repositories.
