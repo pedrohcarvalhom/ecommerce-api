@@ -3,9 +3,7 @@ class LoginController < ApplicationController
   after_action :add_headers, only: [:login]
 
   def login
-    @costumer = CostumersRepository.get_costumer(login_params[:email])
-
-    raise SecurityError if @costumer&.authenticate(login_params[:password]) == false
+    @costumer = Login::LoginCostumer.new(login_params[:email], login_params[:password]).execute
 
     regenerate_tokens
     render json: @costumer

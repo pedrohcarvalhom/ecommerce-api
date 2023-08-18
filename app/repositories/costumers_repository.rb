@@ -16,6 +16,11 @@ class CostumersRepository < BaseRepository
       entity.find_by_email(email)
     end
 
+    def authenticate_costumer(email, password)
+      costumer = entity.find_by_email(email)
+      costumer&.authenticate(password)
+    end
+
     private
 
     def entity
