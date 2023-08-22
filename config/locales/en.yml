@@ -34,3 +34,4 @@ en:
   custom_errors:
     orders:
       delivery_date: 'Invalid delivery date'
+      total_cost: 'Price should be above zero'

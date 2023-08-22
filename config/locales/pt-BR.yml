@@ -2,3 +2,4 @@ pt-BR:
   custom_errors:
     orders:
       delivery_date: 'Data de entrega inválida'
+      total_cost: 'O valor deve ser maior do que zero'
