@@ -1,4 +1,4 @@
-class ProductsRepository
+class ProductsRepository < BaseRepository
   class << self
 
     def all
