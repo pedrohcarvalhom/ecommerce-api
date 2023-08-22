@@ -9,6 +9,7 @@ RSpec.describe Products::CreateProduct do
       let(:params) { attributes_for(:product) }
 
       it 'should return the created product' do
+        params[:category_id] = category.id
         product = action
 
         expect(product).to have_attributes(id: be_present)
