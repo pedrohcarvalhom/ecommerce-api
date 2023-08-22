@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  custom_errors:
+    orders:
+      delivery_date: 'Invalid delivery date'

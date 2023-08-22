@@ -1,0 +1,4 @@
+pt-BR:
+  custom_errors:
+    orders:
+      delivery_date: 'Data de entrega inválida'
