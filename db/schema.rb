@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_24_181550) do
+ActiveRecord::Schema.define(version: 2023_08_22_015849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 2023_06_24_181550) do
     t.index ["token"], name: "index_costumers_on_token"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "shipping_cost"
+    t.integer "total_cost"
+    t.datetime "delivery_date"
+    t.integer "quantity"
+    t.integer "product_id"
+    t.integer "costumer_id"
+    t.integer "address_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "subtitle"
@@ -63,5 +75,8 @@ ActiveRecord::Schema.define(version: 2023_06_24_181550) do
   end
 
   add_foreign_key "addresses", "costumers"
+  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "costumers"
+  add_foreign_key "orders", "products"
   add_foreign_key "products", "categories"
 end

@@ -1,4 +1,4 @@
-class AddressRepository
+class AddressRepository < BaseRepository
   class << self
     private
 

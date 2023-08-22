@@ -14,7 +14,7 @@ module Domains
     end
 
     def total_cost_valid?
-      raise ArgumentError, I18n.t('custom_errors.orders.total_cost') unless total_cost.to_i > 0
+      raise ArgumentError, I18n.t('custom_errors.orders.total_cost') unless total_cost.to_i.positive?
     end
   end
 end

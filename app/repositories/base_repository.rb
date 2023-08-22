@@ -12,6 +12,10 @@ class BaseRepository
       entity.destroy(id)
     end
 
+    def exists(id)
+      entity.exists?(id)
+    end
+
     def update(attrs)
       entity.where(id: attrs[:id]).update(attrs)
     end
