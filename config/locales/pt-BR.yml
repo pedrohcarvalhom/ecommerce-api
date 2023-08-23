@@ -3,3 +3,6 @@ pt-BR:
     orders:
       delivery_date: 'Data de entrega inválida'
       total_cost: 'O valor deve ser maior do que zero'
+      costumer_invalid: 'Comprador não existente'
+      product_invalid: 'Produto não existente'
+      address_invalid: 'Produto não existente'

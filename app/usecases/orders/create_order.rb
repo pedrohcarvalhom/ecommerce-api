@@ -42,13 +42,9 @@ module Orders
     end
 
     def validate_mandatory_relations
-      raise ValidationError unless relations_exists?
-    end
-
-    def relations_exists?
-      costumer_repository.exists(order_params[:costumer_id]) &&
-        product_repository.exists(order_params[:product_id]) &&
-        address_repository.exists(order_params[:address_id])
+      raise ValidationError, I18n.t('custom_errors.orders.costumer_invalid') unless costumer_repository.exists(order_params[:costumer_id])
+      raise ValidationError, I18n.t('custom_errors.orders.product_invalid') unless product_repository.exists(order_params[:product_id])
+      raise ValidationError, I18n.t('custom_errors.orders.address_invalid') unless address_repository.exists(order_params[:address_id])
     end
 
     def create_order
